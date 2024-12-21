@@ -1,3 +1,4 @@
+import 'package:ai/HOME_PAGE/game_page.dart';
 import 'package:ai/HOME_PAGE/home_page.dart';
 import 'package:flutter/material.dart';
 
@@ -17,7 +18,7 @@ class MyApp extends StatelessWidget {
          
          
       ),
-        home:GameHomePage(),
+        home:CoinCollectingGame(),
         debugShowCheckedModeBanner: false,
 
     );

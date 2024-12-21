@@ -13,12 +13,12 @@ class GameHomePage extends StatelessWidget {
         appBar: AppBar(
           title: Text('Game Home Page'),
           centerTitle: true,
-          backgroundColor: Colors.deepPurple,
+          backgroundColor: Colors.orange,
         ),
         body: Container(
           decoration: BoxDecoration(
             gradient: LinearGradient(
-              colors: [Colors.deepPurple, Colors.purpleAccent],
+              colors: [Colors.orange, Colors.red],
               begin: Alignment.topCenter,
               end: Alignment.bottomCenter,
             ),
@@ -68,7 +68,6 @@ class GameHomePage extends StatelessWidget {
                 SizedBox(height: 20),
                 ElevatedButton(
                   onPressed: () {
-                    // Navigate to Tutorial Screen
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.pink,
@@ -79,7 +78,6 @@ class GameHomePage extends StatelessWidget {
                 SizedBox(height: 20),
                 ElevatedButton(
                   onPressed: () {
-                    // Exit the application
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.red,
