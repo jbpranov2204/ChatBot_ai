@@ -53,7 +53,7 @@ class GameHomePage extends StatelessWidget {
                     backgroundColor: Colors.blue,
                     padding: EdgeInsets.symmetric(horizontal: 40, vertical: 15),
                   ),
-                  child: Text('Settings', style: TextStyle(fontSize: 18)),
+                  child: Text('Game Options', style: TextStyle(fontSize: 18)),
                 ),
                 SizedBox(height: 20),
                 ElevatedButton(

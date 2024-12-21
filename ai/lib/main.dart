@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
          
          
       ),
-        home:CoinCollectingGame(),
+        home:GameHomePage(),
         debugShowCheckedModeBanner: false,
 
     );
