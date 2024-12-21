@@ -22,14 +22,14 @@ class CoinGameScreen extends StatefulWidget {
 }
 
 class _CoinGameScreenState extends State<CoinGameScreen> {
-  double basketX = 0; // Horizontal position of the basket
-  double coinX = 0; // Horizontal position of the coin
-  double coinY = -1; // Vertical position of the coin
-  int score = 0; // Current score
-  int highScore = 0; // Highest score
-  int missedCoins = 0; // Missed coins counter
+  double basketX = 0;
+  double coinX = 0;
+  double coinY = -1;
+  int score = 0;
+  int highScore = 0;
+  int missedCoins = 0;
   late Timer _timer;
-  final double coinSpeed = 0.01; // Speed of the falling coin
+  final double coinSpeed = 0.01;
   final Random random = Random();
 
   @override
@@ -42,21 +42,17 @@ class _CoinGameScreenState extends State<CoinGameScreen> {
     resetGame();
     _timer = Timer.periodic(Duration(milliseconds: 16), (timer) {
       setState(() {
-        // Move the coin down
         coinY += coinSpeed;
 
-        // Check if the coin hits the bottom
         if (coinY > 1) {
           missedCoins++;
           resetCoin();
 
-          // Check if the player has missed 5 coins
           if (missedCoins >= 5) {
             endGame();
           }
         }
 
-        // Check if the coin is caught by the basket
         if ((coinY > 0.9) &&
             (coinX - basketX).abs() < 0.2) {
           score++;
@@ -67,8 +63,8 @@ class _CoinGameScreenState extends State<CoinGameScreen> {
   }
 
   void resetCoin() {
-    coinX = random.nextDouble() * 2 - 1; // Random position between -1 and 1
-    coinY = -1; // Reset to top
+    coinX = random.nextDouble() * 2 - 1;
+    coinY = -1;
   }
 
   void resetGame() {
@@ -84,7 +80,6 @@ class _CoinGameScreenState extends State<CoinGameScreen> {
       highScore = score;
     }
 
-    // Show Game Over Dialog
     showDialog(
       context: context,
       barrierDismissible: false,
@@ -107,7 +102,6 @@ class _CoinGameScreenState extends State<CoinGameScreen> {
   void moveBasket(double direction) {
     setState(() {
       basketX += direction;
-      // Prevent basket from moving out of bounds
       if (basketX < -1) basketX = -1;
       if (basketX > 1) basketX = 1;
     });
@@ -125,7 +119,6 @@ class _CoinGameScreenState extends State<CoinGameScreen> {
       backgroundColor: Colors.blue[50],
       body: Stack(
         children: [
-          // Score and Missed Coins Display
           Align(
             alignment: Alignment.topCenter,
             child: Padding(
@@ -144,7 +137,6 @@ class _CoinGameScreenState extends State<CoinGameScreen> {
               ),
             ),
           ),
-          // Coin
           Align(
             alignment: Alignment(coinX, coinY),
             child: Icon(
@@ -153,7 +145,6 @@ class _CoinGameScreenState extends State<CoinGameScreen> {
               size: 40,
             ),
           ),
-          // Basket
           Align(
             alignment: Alignment(basketX, 0.9),
             child: Container(
@@ -165,14 +156,13 @@ class _CoinGameScreenState extends State<CoinGameScreen> {
               ),
             ),
           ),
-          // Controls
           Align(
             alignment: Alignment.bottomCenter,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 ElevatedButton(
-                  onPressed: () => moveBasket(-0.1), // Move left
+                  onPressed: () => moveBasket(-0.1),
                   child: Icon(Icons.arrow_left),
                   style: ElevatedButton.styleFrom(
                     shape: CircleBorder(),
@@ -180,7 +170,7 @@ class _CoinGameScreenState extends State<CoinGameScreen> {
                   ),
                 ),
                 ElevatedButton(
-                  onPressed: () => moveBasket(0.1), // Move right
+                  onPressed: () => moveBasket(0.1),
                   child: Icon(Icons.arrow_right),
                   style: ElevatedButton.styleFrom(
                     shape: CircleBorder(),
